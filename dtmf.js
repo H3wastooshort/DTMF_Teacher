@@ -20,8 +20,11 @@ function stop_tone() {
 	try {osc1.stop();} catch (e){}
 	try {osc2.stop();} catch (e){}
 }
+window.onmouseup = stop_tone;
 
 function play_tone(f1,f2) {
+  stop_tone();
+  
   osc1 = ac.createOscillator();
   osc2 = ac.createOscillator();
   osc1.connect(ac.destination);
@@ -49,7 +52,6 @@ function play_key_tone(key_name=current_correct_btn) {
 	}
 }
 
-
 function disable_btns(ex = null, ele = answers) {
 	let btns = ele.getElementsByTagName('button');
 	for (let i=0; i<btns.length; i++) {
@@ -65,15 +67,14 @@ function btn_correct(e) {
 	let btn = e.target;
 	btn.classList.add('correct_answer');
 	play_key_tone(btn.innerText);
-	btn.onmouseup=stop_tone;
 	disable_btns(btn);
+	btn.onmousedown=next_quiz;
 }
 
 function btn_incorrect(e) {
 	let btn = e.target;
 	btn.classList.add('incorrect_answer');
 	play_key_tone(btn.innerText);
-	btn.onmouseup=stop_tone;
 }
 
 function random_element(arr) {
@@ -100,7 +101,7 @@ function make_quiz_page(mode=current_mode) {
     case 'cols':
     case 'just_cols': {
       let row = Math.round(Math.random()*(keys_by_row_col.length-1));
-      let row_arr = keys_by_row_col[row];
+      let row_arr = keys_by_row_col[row].sort();
       let key = random_element(row_arr);
       add_btns_1d(answers,-1,1,row_arr,key);
 	  current_correct_btn=key;
@@ -108,7 +109,7 @@ function make_quiz_page(mode=current_mode) {
     case 'rows':
 	case 'just_rows': {
       let col = Math.round(Math.random()*(keys_by_col_row.length-1));
-      let col_arr = keys_by_col_row[col];
+      let col_arr = keys_by_col_row[col].sort();
       let key = random_element(col_arr);
       add_btns_1d(answers,1,-1,col_arr,key);
 	  current_correct_btn=key;
