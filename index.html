@@ -12,7 +12,17 @@
   <body>
   <h1>DTMF Teacher</h1>
   <p>Tell DTMF tones by ear!</p>
-  <br>
+  <hr>
+  Modes:
+  <div>
+    <button onclick="change_mode('just_rows');">just row tones</button>
+    <button onclick="change_mode('rows');">row tones with column tones</button>
+    <button onclick="change_mode('just_cols');">just column tones</button>
+    <button onclick="change_mode('cols');">column tones with row tones</button>
+    <button onclick="change_mode('2d');">rows and columns</button>
+    <button onclick="change_mode('2d_full');">rows and columns with ABCD</button>
+  </div>
+  <hr>
   <div id="teacher">
     <button id="tone_btn">Play Tone</button>
     <div id="answers"></div>

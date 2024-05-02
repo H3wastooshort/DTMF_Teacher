@@ -1,6 +1,27 @@
+#teacher {
+  display: none; /*initial state*/
+}
+
 #answers {
   display: grid;
+  height: 50vh;
+  width: 90%;
+  margin: auto;
+  gap: 5px;
 }
 #answers button {
   justify-self: stretch;
 }
+.correct_answer {
+  border-color: lime;
+  background-color: green;
+}
+.incorrect_answer {
+  border-color: magenta;
+  background-color: purple;
+}
+.disabled_answer {
+  opacity: 75%;
+  filter: grayscale(50%);
+}
+
