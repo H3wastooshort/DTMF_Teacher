@@ -108,18 +108,18 @@ function make_quiz_page(mode=current_mode) {
   switch (mode) {
     case 'cols':
     case 'just_cols': {
-      let row = Math.round(Math.random()*(keys_by_row_col.length-1));
+      let row = 0; //Math.round(Math.random()*(keys_by_row_col.length-1));
       let row_arr = keys_by_row_col[row].sort();
       let key = random_element(row_arr);
-      add_btns_1d(answers,-1,1,row_arr,key);
+      add_btns_1d(answers,1,-1,row_arr,key);
 	  current_correct_btn=key;
     } break;
     case 'rows':
 	case 'just_rows': {
-      let col = Math.round(Math.random()*(keys_by_col_row.length-1));
+      let col = 0; //Math.round(Math.random()*(keys_by_col_row.length-1));
       let col_arr = keys_by_col_row[col].sort();
       let key = random_element(col_arr);
-      add_btns_1d(answers,1,-1,col_arr,key);
+      add_btns_1d(answers,-1,1,col_arr,key);
 	  current_correct_btn=key;
     } break;
 	default: console.error("make_quiz_page() case not covered"); break;
