@@ -11,7 +11,7 @@
   </head>
   <body>
   <h1>DTMF Teacher</h1>
-  <p>Tell DTMF tones by ear!</p>
+  Tell DTMF tones by ear! But <a href="help.html">read the instructions</a> first.
   <hr>
   Modes:
   <div>
@@ -19,8 +19,9 @@
     <button onclick="change_mode('rows');">row tones with column tones</button>
     <button onclick="change_mode('just_cols');">just column tones</button>
     <button onclick="change_mode('cols');">column tones with row tones</button>
-    <button onclick="change_mode('2d');">rows and columns</button>
-    <button onclick="change_mode('2d_full');">rows and columns with ABCD</button>
+    <button onclick="change_mode('2d');" disabled>rows and columns</button>
+    <!--<button onclick="change_mode('2d_full');" disabled>rows and columns with ABCD</button>-->
+    <button onclick="change_mode('number');" disabled>full phone number</button>
   </div>
   <hr>
   Stats: <span id="stats_correct">0</span> correct, <span id="stats_incorrect"></span> incorrect
