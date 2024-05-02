@@ -7,7 +7,7 @@
   width: 75%;
   height: 15vh;
   margin: auto;
-  
+  font-size: 300%;
 }
 
 #answers {
@@ -19,17 +19,22 @@
 }
 #answers button {
   justify-self: stretch;
+  font-size: 500%;
 }
 .correct_answer {
+  color: white;
   border-color: lime;
   background-color: green;
 }
 .incorrect_answer {
+  color: white;
   border-color: magenta;
   background-color: purple;
 }
 .disabled_answer {
+  color: white;
   opacity: 75%;
   filter: grayscale(50%);
+  background-color: black;
 }
 
