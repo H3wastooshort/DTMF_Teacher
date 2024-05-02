@@ -1,4 +1,6 @@
 var current_mode = 'none';
+var correct_counter = 0;
+var incorrect_counter = 0;
 
 function next_quiz() {
 	make_quiz_page(current_mode);
@@ -8,6 +10,8 @@ function change_mode(mode) {
 	current_mode=mode;
 	teacher.style.display='initial';
 	next_quiz();
+	correct_counter = 0;
+	incorrect_counter = 0;
 }
 
 var current_correct_btn=' ';
@@ -69,12 +73,16 @@ function btn_correct(e) {
 	play_key_tone(btn.innerText);
 	disable_btns(btn);
 	btn.onmousedown=next_quiz;
+	correct_counter++;
+	stats_correct.innerText=correct_counter;
 }
 
 function btn_incorrect(e) {
 	let btn = e.target;
 	btn.classList.add('incorrect_answer');
 	play_key_tone(btn.innerText);
+	incorrect_counter++;
+	stats_incorrect.innerText=incorrect_counter;
 }
 
 function random_element(arr) {
