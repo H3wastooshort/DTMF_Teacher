@@ -1,0 +1,6 @@
+#answers {
+  display: grid;
+}
+#answers button {
+  justify-self: stretch;
+}
