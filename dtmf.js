@@ -109,7 +109,7 @@ function make_quiz_page(mode=current_mode) {
     case 'cols':
     case 'just_cols': {
       let row = 0; 
-      if (mode == 'cols') Math.round(Math.random()*(keys_by_row_col.length-1));
+      if (mode == 'cols') row = Math.round(Math.random()*(keys_by_row_col.length-1));
       let row_arr = keys_by_row_col[row].sort();
       let key = random_element(row_arr);
       add_btns_1d(answers,1,-1,row_arr,key);
@@ -118,7 +118,7 @@ function make_quiz_page(mode=current_mode) {
     case 'rows':
     case 'just_rows': {
       let col = 0;
-      if (mode == 'rows') Math.round(Math.random()*(keys_by_col_row.length-1));
+      if (mode == 'rows') col = Math.round(Math.random()*(keys_by_col_row.length-1));
       let col_arr = keys_by_col_row[col].sort();
       let key = random_element(col_arr);
       add_btns_1d(answers,-1,1,col_arr,key);
