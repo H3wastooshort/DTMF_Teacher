@@ -3,6 +3,7 @@ var correct_counter = 0;
 var incorrect_counter = 0;
 
 function next_quiz() {
+	stop_tone();
 	make_quiz_page(current_mode);
 }
 
@@ -46,7 +47,6 @@ function play_tone(f1,f2) {
 
 function play_key_tone(key_name=current_correct_btn) {
 	let key = keys_by_key[key_name];
-	console.log(key);
 	let f_row = tone_rows_regular[key.row];
 	let f_col = tone_cols_regular[key.col];
 	switch (current_mode) {
@@ -95,9 +95,9 @@ function add_btns_1d(ele,row,col,arr,ans) {
 		let btn = document.createElement('button');
 		btn.onmousedown = (x==ans) ? btn_correct : btn_incorrect;
 		btn.innerText = x;
-		if (row<0) btn.style.gridRow = i;
+		if (row<0) btn.style.gridRow = i+1;
 		else btn.style.gridRow = row;
-		if (col<0) btn.style.gridColumn = i;
+		if (col<0) btn.style.gridColumn = i+1;
 		else btn.style.gridColumn = col;
 		ele.appendChild(btn);
 	}
@@ -110,7 +110,7 @@ function make_quiz_page(mode=current_mode) {
     case 'just_cols': {
       let row = 0; 
       if (mode == 'cols') row = Math.round(Math.random()*(keys_by_row_col.length-1));
-      let row_arr = keys_by_row_col[row].sort();
+      let row_arr = keys_by_row_col[row];
       let key = random_element(row_arr);
       add_btns_1d(answers,1,-1,row_arr,key);
       current_correct_btn=key;
@@ -119,7 +119,7 @@ function make_quiz_page(mode=current_mode) {
     case 'just_rows': {
       let col = 0;
       if (mode == 'rows') col = Math.round(Math.random()*(keys_by_col_row.length-1));
-      let col_arr = keys_by_col_row[col].sort();
+      let col_arr = keys_by_col_row[col];
       let key = random_element(col_arr);
       add_btns_1d(answers,-1,1,col_arr,key);
       current_correct_btn=key;
