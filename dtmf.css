@@ -2,6 +2,14 @@
   display: none; /*initial state*/
 }
 
+#tone_btn {
+  display: blocK;
+  width: 75%;
+  height: 15vh;
+  margin: auto;
+  
+}
+
 #answers {
   display: grid;
   height: 50vh;
