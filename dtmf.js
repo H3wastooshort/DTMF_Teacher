@@ -11,8 +11,8 @@ function change_mode(mode) {
 	current_mode=mode;
 	teacher.style.display='initial';
 	next_quiz();
-	correct_counter = 0;
-	incorrect_counter = 0;
+	stats_correct.innerText=correct_counter = 0;
+	stats_incorrect.innerText=incorrect_counter = 0;
 }
 
 var current_correct_btn=' ';
