@@ -103,6 +103,17 @@ function add_btns_1d(ele,row,col,arr,ans) {
 	}
 }
 
+function add_btns_2d(ele,arr,ans) {
+	for (x in arr) {
+		let btn = document.createElement('button');
+		btn.onmousedown = (x==ans) ? btn_correct : btn_incorrect;
+		btn.innerText = x;
+		btn.style.gridRow = keys_by_key[x].row +1;
+		btn.style.gridColumn = keys_by_key[x].col +1;
+		ele.appendChild(btn);
+	}
+}
+
 function make_quiz_page(mode=current_mode) {
   answers.innerHTML="";
   switch (mode) {
@@ -122,6 +133,11 @@ function make_quiz_page(mode=current_mode) {
       let col_arr = keys_by_col_row[col];
       let key = random_element(col_arr);
       add_btns_1d(answers,-1,1,col_arr,key);
+      current_correct_btn=key;
+    } break;
+    case '2d': {
+      let key = random_element(Object.keys(keys_by_key));
+      add_btns_2d(answers,keys_by_key,key);
       current_correct_btn=key;
     } break;
     default: console.error("make_quiz_page() case not covered"); break;
